@@ -116,6 +116,6 @@ body = Voron VS.707: {event_message}
 attach = http://localhost/webcam/?action=snapshot
 
 [spoolman]
-server = http://192.168.1.2:7912
+server = http://spoolman.home:8000
 sync_rate = 5
 
