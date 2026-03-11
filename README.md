@@ -1,42 +1,82 @@
-# Voron V2.4 – Blue Printer Configuration
+# Voron VS.707 – Enderwire Configuration
 
-This repository contains the full Klipper configuration for my **Voron V2.4** printer (nicknamed **Blue**).
+Configuration repository for **Voron VS.707**, an **Enderwire conversion** running Klipper.
 
-This configuration includes several custom macro systems designed to make multi-print workflows much faster while still maintaining safety.
-
-## Key Features
-
-- Hot Standby Mode
-- Fast Restart (skip homing and QGL)
-- TAP sanity probe validation
-- Automatic standby timeout shutdown
-- Chamber air purge safety cycle
-- MMU-friendly print ending
-- Material-aware fan behavior
+This repository contains the printer configuration, macros, and supporting service configuration.
 
 ---
 
-# Printer Hardware
+## Printer Details
 
-| Component | Details |
-|---|---|
-| Printer | Voron V2.4 |
-| Probe | Voron TAP |
-| Toolhead | TAP compatible |
-| MMU | ERCF |
-| Chamber | Fully enclosed |
-| Filtration | Nevermore |
-| Airflow | Intake / Exhaust / Cooling fans |
-| Firmware | Klipper |
+| Component | Description               |
+| --------- | ------------------------- |
+| Printer   | Enderwire                 |
+| Firmware  | Klipper                   |
+| Host      | Raspberry Pi (MainsailOS) |
+| UI        | Mainsail / KlipperScreen  |
+
 
 ---
 
-# Major Macro Systems
+## Repository Layout
 
-## Hot Standby Mode
+```
+printer.cfg                Main Klipper entrypoint
 
-Hot standby allows the printer to remain in a **ready-to-print state** after a print finishes.
+hardware/                  Hardware configuration
+features/                  Optional printer features
+tuning/                    Input shaper / accelerometer tuning
 
-This is intended for workflows where multiple prints are started in sequence using the same material.
+macros/                    Organized macros
+services/                  Host-side service configs
 
-Hot standby is controlled with:
+archive/                   Old configs retained for reference
+artifacts/                 Runtime files ignored by git
+```
+
+
+
+
+
+
+
+
+---
+
+## Configuration Backup
+
+The repository includes a macro to automatically back up configuration changes.
+
+Run:
+
+```
+BACKUP_CFG
+```
+
+This executes:
+
+```
+services/autocommit.sh
+```
+
+which commits and pushes configuration changes to GitHub.
+
+---
+
+## Notes
+
+* Runtime files are ignored via `.gitignore`
+* Configuration structure is shared across printers for consistency
+* Designed for easy cloning and reuse
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Jason S
